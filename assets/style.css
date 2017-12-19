@@ -1,0 +1,37 @@
+<<<<<<< HEAD
+
+
+/*# sourceMappingURL=style.css.map */
+=======
+.title-bar {
+	text-align: center;
+	padding: 30px;
+	background-color: dimgrey;
+	
+	width: 100%;
+	
+	
+}
+
+.welcome {
+	text-align: left;
+	display: inline-block;
+	width: 33%;
+}
+
+.title {
+	text-align: center;
+	display: inline-block;
+	width: 33%;
+}
+
+.weather {
+	text-align: right;
+	display: inline-block;
+	width: 33%;
+}
+
+
+
+
+>>>>>>> c8081e9d91399465f244c5ed20d7bf6cc1057120
