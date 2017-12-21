@@ -1,8 +1,45 @@
 .modules-area {
     width: 920px;
     margin: 0 auto;
-    .module {
-        width: 300px;
-        display: inline-block;
-    }
+}
+
+.modules-area .module {
+    width: 300px;
+    display: inline-block;
+}
+
+.footer {
+    width: 900px;
+    height: 10%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.title-bar {
+    background-color: grey;
+}
+
+.modules-area {
+    width: 920px;
+    margin: 0 auto;
+}
+
+.modules-area .module {
+    width: 300px;
+    display: inline-block;
+}
+
+.footer {
+    width: 900px;
+    height: 10%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.title-bar {
+    background-color: grey;
+}
+
+.body-container {
+    background-image: url("https://timedotcom.files.wordpress.com/2017/08/coffee.jpg");
 }

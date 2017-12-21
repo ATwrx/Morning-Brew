@@ -7,6 +7,7 @@
 
 .footer {
 	width: 900px;
+	height: 10%;
 	margin: 0 auto;
 	text-align: center;
 }
@@ -18,4 +19,6 @@
 .body-container{
 	background-image: url("https://timedotcom.files.wordpress.com/2017/08/coffee.jpg");
 }
+
+
 /*# sourceMappingURL=style.css.map */
