@@ -1,3 +1,15 @@
+
+ html, body {
+  height: 100%;
+  margin: 0;
+}
+.container {
+  min-height: 100%;
+  margin-bottom: -50px;
+}
+
+
+
 .modules-area {
   width: 920px;
   margin: 0 auto; }
@@ -6,19 +18,18 @@
     display: inline-block; }
 
 .footer {
-	width: 900px;
-	height: 10%;
+	background-color: red;
+	width: 100%;
+	height: 50px;
 	margin: 0 auto;
 	text-align: center;
 }
 
 .title-bar{
-	background-color: grey;
+	background-color: ;
 }
 
-.body-container{
-	background-image: url("https://timedotcom.files.wordpress.com/2017/08/coffee.jpg");
-}
+
 
 
 /*# sourceMappingURL=style.css.map */
