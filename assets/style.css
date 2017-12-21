@@ -5,4 +5,17 @@
     width: 300px;
     display: inline-block; }
 
+.footer {
+	width: 900px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.title-bar{
+	background-color: grey;
+}
+
+.body-container{
+	
+}
 /*# sourceMappingURL=style.css.map */
