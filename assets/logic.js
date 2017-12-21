@@ -13,6 +13,7 @@ var database = firebase.database();
 var user = firebase.auth().currentUser;
 var name, email, photoUrl, uid, emailVerified;
 
+
 if (user != null) {
     name = user.displayName;
     email = user.email;
@@ -20,9 +21,8 @@ if (user != null) {
     emailVerified = user.emailVerified;
     uid = user.uid;
 } else {
-    // TODO: sign up modal
+    // loadModules();
 }
-
 
 // User status listener
 firebase.auth().onAuthStateChanged(function (user) {
@@ -33,7 +33,11 @@ firebase.auth().onAuthStateChanged(function (user) {
     }
 });
 
+function loadModules() {
+    var titleBar = $(".title-bar");
 
+
+}
 // Button for the sign up page
 $("#sign-up-button").click(function () {
     var email = $("#email").val();
