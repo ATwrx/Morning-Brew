@@ -1,8 +1,39 @@
-.modules-area {
-    width: 920px;
-    margin: 0 auto;
-    .module {
-        width: 300px;
-        display: inline-block;
-    }
+html, body {
+  height: 100%;
+  margin: 0;
 }
+
+
+$footerHeight: 50px;
+.container {
+  min-height: 100%;
+  margin-bottom: -$footerHeight;
+}
+
+
+
+.modules-area {
+  width: 920px;
+  margin: 0 auto; 
+  .module {
+    width: 300px;
+    display: inline-block;
+  }
+}
+
+.footer {
+	background-color: red;
+	width: 100%;
+	height: $footerHeight;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.title-bar{
+	background-color: grey;
+}
+
+
+
+
+
