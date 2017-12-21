@@ -34,7 +34,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 });
 
 function loadModules() {
-    var titleBar = $(".title-bar");
+    var weatherArea = $(".weather");
 
 
 }
