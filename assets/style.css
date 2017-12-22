@@ -1,7 +1,12 @@
+<<<<<<< HEAD
 * {
   border: 2px solid red; }
 
 html, body {
+=======
+html,
+body {
+>>>>>>> 683a5cc265590007b9d9c1aed30d0f675817b0fd
   height: 100%;
   margin: 0; }
 
@@ -12,18 +17,44 @@ html, body {
 .modules-area {
   width: 920px;
   margin: 0 auto; }
-  .modules-area .module {
-    width: 300px;
-    display: inline-block; }
+
+.modules-area .module {
+  width: 300px;
+  display: inline-block; }
 
 .footer {
-  background-color: grey;
-  width: 100%;
-  height: 50px;
+  width: 900px;
+  height: 10%;
   margin: 0 auto;
   text-align: center; }
 
 .title-bar {
   background-color: grey; }
+
+.modules-area {
+  width: 920px;
+  margin: 0 auto; }
+
+.modules-area .module {
+  width: 300px;
+  display: inline-block; }
+
+.footer {
+<<<<<<< HEAD
+  background-color: grey;
+  width: 100%;
+  height: 50px;
+=======
+  width: 900px;
+  height: 10%;
+>>>>>>> 683a5cc265590007b9d9c1aed30d0f675817b0fd
+  margin: 0 auto;
+  text-align: center; }
+
+.title-bar {
+  background-color: grey; }
+
+.body-container {
+  background-image: url("https://timedotcom.files.wordpress.com/2017/08/coffee.jpg"); }
 
 /*# sourceMappingURL=style.css.map */

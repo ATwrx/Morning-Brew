@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *{
   border: 2px solid red;
 }
@@ -6,29 +7,37 @@
 html, body {
   height: 100%;
   margin: 0;
+=======
+html,
+body {
+    height: 100%;
+    margin: 0;
+>>>>>>> 683a5cc265590007b9d9c1aed30d0f675817b0fd
 }
-
 
 $footerHeight: 50px;
 
 .container {
-  min-height: 100%;
-  margin-bottom: -$footerHeight;
+    min-height: 100%;
+    margin-bottom: -$footerHeight;
 }
 
-
-
 .modules-area {
-  width: 920px;
-  margin: 0 auto; 
-  .module {
+    width: 920px;
+    margin: 0 auto;
+}
+
+.modules-area .module {
     width: 300px;
     display: inline-block;
+<<<<<<< HEAD
   }
 
 }
 .location {
   
+=======
+>>>>>>> 683a5cc265590007b9d9c1aed30d0f675817b0fd
 }
 
 .weather{
@@ -38,18 +47,45 @@ $footerHeight: 50px;
 
 
 .footer {
+<<<<<<< HEAD
 	background-color: grey;
 	width: 100%;
 	height: $footerHeight;
 	margin: 0 auto;
 	text-align: center;
+=======
+    width: 900px;
+    height: 10%;
+    margin: 0 auto;
+    text-align: center;
+>>>>>>> 683a5cc265590007b9d9c1aed30d0f675817b0fd
 }
 
-.title-bar{
-	background-color: grey;
+.title-bar {
+    background-color: grey;
 }
 
+.modules-area {
+    width: 920px;
+    margin: 0 auto;
+}
 
+.modules-area .module {
+    width: 300px;
+    display: inline-block;
+}
 
+.footer {
+    width: 900px;
+    height: 10%;
+    margin: 0 auto;
+    text-align: center;
+}
 
+.title-bar {
+    background-color: grey;
+}
 
+.body-container {
+    background-image: url("https://timedotcom.files.wordpress.com/2017/08/coffee.jpg");
+}

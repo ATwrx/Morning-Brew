@@ -13,6 +13,7 @@ var database = firebase.database();
 var user = firebase.auth().currentUser;
 var name, email, photoUrl, uid, emailVerified;
 
+var defaultModules = [""]
 
 if (user != null) {
     name = user.displayName;
@@ -33,8 +34,12 @@ firebase.auth().onAuthStateChanged(function (user) {
     }
 });
 
+function getWeather() {
+
+}
 function loadModules() {
-    var titleBar = $(".title-bar");
+    var weatherArea = $(".weather");
+
 
 
 }
