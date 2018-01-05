@@ -1,5 +1,4 @@
-
-var config = {
+const config = {
     apiKey: "AIzaSyCXFygFxFj__zV1rdnnnRNyNQ7eiR8a5Mg",
     authDomain: "fresh-brew.firebaseapp.com",
     databaseURL: "https://fresh-brew.firebaseio.com",
@@ -8,13 +7,11 @@ var config = {
     messagingSenderId: "29406706890"
 };
 firebase.initializeApp(config);
-var database = firebase.database();
+const database = firebase.database();
 
-var user = firebase.auth().currentUser;
+const user = firebase.auth().currentUser;
 var name, email, photoUrl, uid, emailVerified;
-
-var defaultModules = [""]
-
+const defaultModules = ["sports"]
 if (user != null) {
     name = user.displayName;
     email = user.email;
@@ -22,11 +19,11 @@ if (user != null) {
     emailVerified = user.emailVerified;
     uid = user.uid;
 } else {
-    // loadModules();
+    loadDefault()
 }
 
 // User status listener
-firebase.auth().onAuthStateChanged(function (user) {
+firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         // User is signed in.
     } else {
@@ -37,6 +34,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 function getWeather() {
 
 }
+
 function loadModules() {
     var weatherArea = $(".weather");
 
@@ -44,23 +42,20 @@ function loadModules() {
 
 }
 // Button for the sign up page
-$("#sign-up-button").click(function () {
+$("#sign-up-button").click(function() {
     var email = $("#email").val();
     var password = $("#password").val();
-    firebase.auth().createUserWithEmailAndPassword(email, password)
-        .catch(function (error) {
-            // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            if (errorCode == 'auth/weak-password') {
-                alert('The password is too weak.');
-            } else {
-                alert(errorMessage);
-            }
-            console.log(error);
-        });
+    firebase.auth().createUserWithEmailAndPassword(email, password).
+    catch (function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        if (errorCode == 'auth/weak-password') {
+            alert('The password is too weak.');
+        } else {
+            alert(errorMessage);
+        }
+        console.log(error);
+    });
 })
-
-
-
 
