@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Ranga");
 /** {*/
     //border: 2px solid red;
 /*}*/
@@ -29,20 +30,26 @@ $footerHeight: 50px;
 .weather {}
 
 .footer {
-    background-color: grey;
+    background-color: #282828;
     width: 100%;
     height: $footerHeight;
     margin: 0 auto;
     text-align: center;
+    color: white;
+    border-top: 1px solid black;
+    font-family: sans
 }
 
 .title-bar {
-    background-color: grey;
+    background-color: #8B4515;
+    border: 1px solid black;
+    
 }
 
 .modules-area {
     width: 920px;
     margin: 0 auto;
+
 }
 
 .modules-area .module {
@@ -50,17 +57,22 @@ $footerHeight: 50px;
     display: inline-block;
 }
 
-.footer {
-    width: 900px;
-    height: 10%;
-    margin: 0 auto;
-    text-align: center;
+
+.container {
+    background-image: url('http://amazingtile.info/wp-content/uploads/2016/02/grey-wood-flooring-texture.jpg');
 }
 
-.title-bar {
-    background-color: grey;
+.welcome h1 {
+    font-family: "Ranga", times new roman;
+    font-size: 70px;
 }
 
-.body-container {
-    background-image: url("https://timedotcom.files.wordpress.com/2017/08/coffee.jpg");
+.location h3 {
+    font-family: American typewriter;
 }
+
+.weather h3 {
+    font-family: American typewriter;
+}
+
+
