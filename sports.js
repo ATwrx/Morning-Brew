@@ -7,6 +7,7 @@ export function sports() {
             let $br = $("<br>");
             let article = $div.html("<h3>" + r.articles[i].title + "</h3> <p>" + r.articles[i].description + "</p>")
             $(".module-body").append(article);
+
         }
     }
 }
