@@ -24,7 +24,7 @@ body {
   border: 1px solid black; }
   .title-bar h1 {
     font-family: "Ranga", times new roman;
-    font-size: 2.5em; }
+    font-size: 3.0em; }
   .title-bar h3 {
     font-family: American typewriter; }
 
@@ -44,9 +44,9 @@ body {
     overflow: scroll;
     border-radius: 25px; }
   .modules-area .module h3 {
-    color: #004b8d;
-    font-family: courier;
-    font-weight: bolder;
-    font-size: 35px; }
+    color: #d8d8d8;
+    font-family: Palatino;
+    font-weight: bold;
+    font-size: 40px; }
 
 /*# sourceMappingURL=style.css.map */
