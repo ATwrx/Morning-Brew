@@ -44,8 +44,9 @@ body {
     overflow: scroll;
     border-radius: 25px; }
   .modules-area .module h3 {
-    color: #9d9d9d;
+    color: #004b8d;
     font-family: courier;
-    font-weight: bolder; }
+    font-weight: bolder;
+    font-size: 35px; }
 
 /*# sourceMappingURL=style.css.map */

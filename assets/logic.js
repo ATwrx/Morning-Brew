@@ -98,7 +98,7 @@ function sports() {
         console.log(r.articles[0]);
         for (let i = 0; i < 5; i++) {
             let $div = $("<div>");
-            $div.html("<h5 class='sports-title'><strong><a href='"+ r.articles[i].url +"'>" + r.articles[i].title + "</strong></a></h5><p class='sports-text'>" + r.articles[i].description + "</p>")
+            $div.html("<h5 class='sports-title'><strong><a href='"+ r.articles[i].url +"'style='color: white;'>" + r.articles[i].title + "</strong></a></h5><p class='sports-text'>" + r.articles[i].description + "</p>")
             $div.addClass("sports-article-" + i)
             if (i == 0) {
                 $(".sports").append($div)
