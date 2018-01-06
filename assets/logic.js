@@ -31,21 +31,24 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 function loadDefault() {
     getWeather()
-    //getDate()
-    
+    getDate()
     for (let i = 0; i < defaultModules.length; i++) {
         let $div = $("<div>")
         $div.addClass(defaultModules[i])
         $div.addClass("module")
         $(".modules-area").append($div)
     }
-
     sports()
+}
+
+function getDate() {
+    let today = new Date().toDateString()
+    let time = new Date().toTimeString()
+    $(".date").text(today + " " + time)
 }
 
 function getWeather() {
     let api = "https://fcc-weather-api.glitch.me/api/current?";
-
     function showPosition() {
         if ("geolocation" in navigator) {
             navigator.geolocation.getCurrentPosition(function(position) {
@@ -83,7 +86,7 @@ function getWeather() {
                 });
             });
         } else {
-            $("#noGeo").text("Your browser doesn't support Geolocation!");
+            console.log("No Browser Support for Geoloaction")
         }
     }
 
@@ -95,7 +98,7 @@ function sports() {
         //console.log(r.articles[0]);
         for (let i = 0; i < 5; i++) {
             let $div = $("<div>");
-            $div.html("<h5 class='sports-title'><strong>" + r.articles[i].title + "</strong></h5><p class='sports-text'>" + r.articles[i].description + "</p>")
+            $div.html("<a href='"+ r.article[i].url +"'><h5 class='sports-title'><strong>" + r.articles[i].title + "</strong></h5></a><p class='sports-text'>" + r.articles[i].description + "</p>")
             $div.addClass("sports-article-" + i)
             if (i == 0) {
                 $(".sports").append($div)
