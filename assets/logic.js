@@ -31,71 +31,71 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 function loadDefault() {
     getWeather()
-    getDate()
+    //getDate()
+    
     for (let i = 0; i < defaultModules.length; i++) {
         let $div = $("<div>")
         $div.addClass(defaultModules[i])
         $div.addClass("module")
         $(".modules-area").append($div)
     }
-    sports()
-}
 
-function getDate() {
-    let today = new Date().toDateString()
-    let time = new Date().toTimeString()
-    $(".date").text(today + " " + time)
+    sports()
 }
 
 function getWeather() {
     let api = "https://fcc-weather-api.glitch.me/api/current?";
-    if ("geolocation" in navigator) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            let userLocation = {};
-            userLocation.lat = position.coords.latitude;
-            userLocation.lon = position.coords.longitude;
-            $.ajax(api + $.param(userLocation)).done(function(r) {
-                let icon = $("<img>");
-                let result = $("<h4>");
-                let cTemp = r.main.temp;
-                let fTemp = Math.floor(cTemp * 1.8 + 32);
-                let isCelsius = true;
 
-                result.text(fTemp);
-                icon.attr("src", r.weather[0].icon);
-                icon.attr("alt", r.weather[0].description);
-                result.text(r.weather[0].main);
+    function showPosition() {
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                let userLocation = {};
+                userLocation.lat = position.coords.latitude;
+                userLocation.lon = position.coords.longitude;
+                $.ajax(api + $.param(userLocation)).done(function(r) {
+                    let icon = $("<img>");
+                    let result = $("<h4>");
+                    let cTemp = r.main.temp;
+                    let fTemp = Math.floor(cTemp * 1.8 + 32);
+                    let isCelsius = true;
 
-                $(".weather").append(result, icon)
-                $(".temp").click(function() {
-                    if (isCelsius == true) {
-                        tempArea.text(fTemp);
-                        $("#f-temp").addClass("active");
-                        $("#c-temp").removeClass("active");
-                        isCelsius = false;
-                        return isCelsius;
-                    } else {
-                        tempArea.text(cTemp);
-                        $("#c-temp").addClass("active");
-                        $("#f-temp").removeClass("active");
-                        isCelsius = true;
-                        return isCelsius;
-                    };
+                    result.text(fTemp);
+                    icon.attr("src", r.weather[0].icon);
+                    icon.attr("alt", r.weather[0].description);
+                    result.text(r.weather[0].main);
+
+                    $(".weather").append(result, icon)
+                    $(".temp").click(function() {
+                        if (isCelsius == true) {
+                            tempArea.text(fTemp);
+                            $("#f-temp").addClass("active");
+                            $("#c-temp").removeClass("active");
+                            isCelsius = false;
+                            return isCelsius;
+                        } else {
+                            tempArea.text(cTemp);
+                            $("#c-temp").addClass("active");
+                            $("#f-temp").removeClass("active");
+                            isCelsius = true;
+                            return isCelsius;
+                        };
+                    });
                 });
             });
-        })
-    } else {
-        $(".weather").text("Geolocation is not supported in your browser")
+        } else {
+            $("#noGeo").text("Your browser doesn't support Geolocation!");
+        }
     }
+
 }
 
 function sports() {
     let api = "https://newsapi.org/v2/top-headlines?sources=bbc-sport&apiKey=94d15b4fc0ea4ac8a2102b268ac422de";
     $.ajax(api).done(function(r) {
-        console.log(r.articles[0]);
+        //console.log(r.articles[0]);
         for (let i = 0; i < 5; i++) {
             let $div = $("<div>");
-            $div.html("<h5 class='sports-title'><strong><a href='" + r.articles[i].url + "'>" + r.articles[i].title + "</strong></a></h5><p class='sports-text'>" + r.articles[i].description + "</p>")
+            $div.html("<h5 class='sports-title'><strong>" + r.articles[i].title + "</strong></h5><p class='sports-text'>" + r.articles[i].description + "</p>")
             $div.addClass("sports-article-" + i)
             if (i == 0) {
                 $(".sports").append($div)
