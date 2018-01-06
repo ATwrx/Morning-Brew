@@ -10,7 +10,7 @@ firebase.initializeApp(config)
 const database = firebase.database()
 const user = firebase.auth().currentUser
 var name, email, photoUrl, uid, emailVerified
-const defaultModules = ["sports", "technews", "bar"]
+const defaultModules = ["sports", "technews", "crypto"]
 if (user != null) {
     name = user.displayName
     email = user.email
@@ -40,6 +40,7 @@ function loadDefault() {
     }
     sports()
     technews()
+    crypto()
 }
 
 function getDate() {
@@ -56,7 +57,6 @@ function getWeather() {
             userLocation.lat = position.coords.latitude;
             userLocation.lon = position.coords.longitude;
             $.ajax(api + $.param(userLocation)).done(function(r) {
-                console.log(r)
                 let icon = $("<img>");
                 let result = $("<h4>");
                 let cTemp = r.main.temp;
@@ -89,6 +89,7 @@ function getWeather() {
         })
     }
 }
+
 function sports() {
     let api = "https://newsapi.org/v2/top-headlines?sources=bbc-sport&apiKey=94d15b4fc0ea4ac8a2102b268ac422de";
     $.ajax(api).done(function(r) {
@@ -132,6 +133,21 @@ function technews() {
     })
 }
 
+function crypto() {
+    let api = "https://api.coinmarketcap.com/v1/ticker/";
+    let coin = "bitcoin"
+    $.ajax({
+        url: api + coin + "/",
+        success: function(r) {
+            var thisCoin = r[0];
+            console.log(r);
+            $(".crypto").html("<h1>" + thisCoin.name + " (" + thisCoin.symbol + ") </h1><h2>Current Price (USD): " + thisCoin.price_usd + "</h2>");
+        },
+        error: function() {
+            $(".crypto").html("<h2>An error occured.</h2><h4> Is the name of the coin spelled correctly?</h4>")
+        }
+    })
+}
 // Button for the sign up page
 $("#sign-up-button").click(function() {
     var email = $("#email").val();
