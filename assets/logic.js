@@ -95,10 +95,10 @@ function getWeather() {
 function sports() {
     let api = "https://newsapi.org/v2/top-headlines?sources=bbc-sport&apiKey=94d15b4fc0ea4ac8a2102b268ac422de";
     $.ajax(api).done(function(r) {
-        //console.log(r.articles[0]);
+        console.log(r.articles[0]);
         for (let i = 0; i < 5; i++) {
             let $div = $("<div>");
-            $div.html("<a href='"+ r.article[i].url +"'><h5 class='sports-title'><strong>" + r.articles[i].title + "</strong></h5></a><p class='sports-text'>" + r.articles[i].description + "</p>")
+            $div.html("<h5 class='sports-title'><strong><a href='"+ r.articles[i].url +"'>" + r.articles[i].title + "</strong></a></h5><p class='sports-text'>" + r.articles[i].description + "</p>")
             $div.addClass("sports-article-" + i)
             if (i == 0) {
                 $(".sports").append($div)
