@@ -10,7 +10,7 @@ firebase.initializeApp(config)
 const database = firebase.database()
 const user = firebase.auth().currentUser
 var name, email, photoUrl, uid, emailVerified
-const defaultModules = ["sports", "technews", "crypto"]
+const defaultModules = ["sports", "technews", "news", "crypto"]
 if (user != null) {
     name = user.displayName
     email = user.email
@@ -40,6 +40,7 @@ function loadDefault() {
     }
     sports()
     technews()
+    news()
     crypto()
 }
 
@@ -114,7 +115,7 @@ function sports() {
 function technews() {
     let api = "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=94d15b4fc0ea4ac8a2102b268ac422de";
     $.ajax(api).done(function(r) {
-        console.log(r.articles[0]);
+        // console.log(r.articles[0]);
         let $h3 = $("<h3>").text("Tech News")
         $h3.addClass("module-title")
         $(".technews").append($h3)
@@ -148,6 +149,28 @@ function crypto() {
         }
     })
 }
+function news() {
+    let api = "https://newsapi.org/v2/top-headlines?sources=nbc-news&apiKey=94d15b4fc0ea4ac8a2102b268ac422de";
+    $.ajax(api).done(function(r) {
+        console.log(r.articles[0]);
+        let $h3 = $("<h3>").text("World News")
+        $h3.addClass("module-title")
+        $(".news").append($h3)
+
+        for (let i = 0; i < 5; i++) {
+            let $div = $("<div>");
+            $div.html("<h5 class='news-title'><strong><a href='" + r.articles[i].url + "'style='font-size: 20px;'>" + r.articles[i].title + "</strong></a></h5><p class='news-text'>" + r.articles[i].description + "</p>")
+            $div.addClass("news-article-" + i)
+            if (i == 0) {
+                $(".news").append($div)
+            } else {
+                let prev = i - 1
+                $(".news-article-" + prev).append($div);
+            }
+        }
+    })
+}
+
 // Button for the sign up page
 $("#sign-up-button").click(function() {
     var email = $("#email").val();
