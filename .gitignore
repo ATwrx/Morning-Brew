@@ -1,6 +1,6 @@
 .DS_Store
 .sass-cache
 .cache
-.swp 
-.swo
-.map
+*.swp 
+*.swo
+*.map
