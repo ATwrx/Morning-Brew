@@ -49,6 +49,8 @@ $footerHeight: 50px;
 
 .modules-area {
     width: 1000px;
+    margin: 0 auto;
+    margin-bottom: -$footerHeight;
     .module {
         background: rgba(0,0,0,0.4);
         margin: 10px;

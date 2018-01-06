@@ -29,7 +29,9 @@ body {
     font-family: American typewriter; }
 
 .modules-area {
-  width: 1000px; }
+  width: 1000px;
+  margin: 0 auto;
+  margin-bottom: -50px; }
   .modules-area .module {
     background: rgba(0, 0, 0, 0.4);
     margin: 10px;
