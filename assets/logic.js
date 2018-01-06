@@ -88,6 +88,7 @@ function getWeather() {
         $(".weather").text("Geolocation is not supported in your browser") 
     }
 }
+<<<<<<< HEAD
     function sports() {
         let api = "https://newsapi.org/v2/top-headlines?sources=bbc-sport&apiKey=94d15b4fc0ea4ac8a2102b268ac422de";
         $.ajax(api).done(function(r) {
@@ -119,6 +120,19 @@ function getWeather() {
             var errorMessage = error.message;
             if (errorCode == 'auth/weak-password') {
                 alert('The password is too weak.');
+=======
+
+function sports() {
+    let api = "https://newsapi.org/v2/top-headlines?sources=bbc-sport&apiKey=94d15b4fc0ea4ac8a2102b268ac422de";
+    $.ajax(api).done(function(r) {
+        console.log(r.articles[0]);
+        for (let i = 0; i < 5; i++) {
+            let $div = $("<div>");
+            $div.html("<h5 class='sports-title'><strong><a href='"+ r.articles[i].url +"'style='color: white;'>" + r.articles[i].title + "</strong></a></h5><p class='sports-text'>" + r.articles[i].description + "</p>")
+            $div.addClass("sports-article-" + i)
+            if (i == 0) {
+                $(".sports").append($div)
+>>>>>>> c42f01fec5ee3b4145e85ec8e9275fe5fc0ad70c
             } else {
                 alert(errorMessage);
             }

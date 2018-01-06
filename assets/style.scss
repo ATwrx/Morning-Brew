@@ -10,7 +10,7 @@ body {
 
 $redBrown: #8B4515;
 $footerHeight: 50px;
-$silver: #dddddd;
+$silver: #0074D9;
 
 
 .container {
@@ -65,9 +65,10 @@ $silver: #dddddd;
         border-radius: 25px;
     }
     .module h3 {
-        color: darken($silver, 25%);
+        color: darken($silver,15%);
         font-family: courier;
         font-weight: bolder;
+        font-size: 35px;
     }
 }
 
