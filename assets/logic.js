@@ -55,18 +55,20 @@ function getWeather() {
             userLocation.lat = position.coords.latitude;
             userLocation.lon = position.coords.longitude;
             $.ajax(api + $.param(userLocation)).done(function(r) {
+                console.log(r)
                 let icon = $("<img>");
                 let result = $("<h4>");
                 let cTemp = r.main.temp;
                 let fTemp = Math.floor(cTemp * 1.8 + 32);
                 let isCelsius = true;
 
-                result.text(fTemp);
+                result.text(r.name);
+                $(".temp").text(fTemp)
                 icon.attr("src", r.weather[0].icon);
                 icon.attr("alt", r.weather[0].description);
-                result.text(r.weather[0].main);
 
-                $(".weather").append(result, icon)
+
+                $(".weather").prepend(result, icon)
                 $(".temp").click(function() {
                     if (isCelsius == true) {
                         tempArea.text(fTemp);
@@ -75,7 +77,7 @@ function getWeather() {
                         isCelsius = false;
                         return isCelsius;
                     } else {
-                        tempArea.text(cTemp);
+                            tempArea.text(cTemp);
                         $("#c-temp").addClass("active");
                         $("#f-temp").removeClass("active");
                         isCelsius = true;
@@ -88,14 +90,13 @@ function getWeather() {
         $(".weather").text("Geolocation is not supported in your browser")
     }
 }
-
 function sports() {
     let api = "https://newsapi.org/v2/top-headlines?sources=bbc-sport&apiKey=94d15b4fc0ea4ac8a2102b268ac422de";
     $.ajax(api).done(function(r) {
         console.log(r.articles[0]);
         for (let i = 0; i < 5; i++) {
             let $div = $("<div>");
-           $div.html("<h5 class='sports-title'><strong><a href='" + r.articles[i].url + "'style='color: white;'>" + r.articles[i].title + "</strong></a></h5><p class='sports-text'>" + r.articles[i].description + "</p>")
+            $div.html("<h5 class='sports-title'><strong><a href='" + r.articles[i].url + "'style='color: white;'>" + r.articles[i].title + "</strong></a></h5><p class='sports-text'>" + r.articles[i].description + "</p>")
             $div.addClass("sports-article-" + i)
             if (i == 0) {
                 $(".sports").append($div)
