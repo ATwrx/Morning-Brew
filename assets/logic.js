@@ -78,7 +78,7 @@ function getWeather() {
                         isCelsius = false;
                         return isCelsius;
                     } else {
-                            tempArea.text(cTemp);
+                        tempArea.text(cTemp);
                         $("#c-temp").addClass("active");
                         $("#f-temp").removeClass("active");
                         isCelsius = true;
@@ -86,11 +86,8 @@ function getWeather() {
                     };
                 });
             });
-        } else {
-            $("#noGeo").text("Your browser doesn't support Geolocation!");
-        }
+        })
     }
-
 }
 function sports() {
     let api = "https://newsapi.org/v2/top-headlines?sources=bbc-sport&apiKey=94d15b4fc0ea4ac8a2102b268ac422de";
@@ -98,7 +95,7 @@ function sports() {
         //console.log(r.articles[0]);
         for (let i = 0; i < 5; i++) {
             let $div = $("<div>");
-           $div.html("<h5 class='sports-title'><strong><a href='" + r.articles[i].url + "'style='font-size: 20px;'>" + r.articles[i].title + "</strong></a></h5><p class='sports-text'>" + r.articles[i].description + "</p>")
+            $div.html("<h5 class='sports-title'><strong><a href='" + r.articles[i].url + "'style='font-size: 20px;'>" + r.articles[i].title + "</strong></a></h5><p class='sports-text'>" + r.articles[i].description + "</p>")
             $div.addClass("sports-article-" + i)
             if (i == 0) {
                 $(".sports").append($div)
@@ -117,13 +114,13 @@ function technews() {
     let api = "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=94d15b4fc0ea4ac8a2102b268ac422de";
     $.ajax(api).done(function(r) {
         console.log(r.articles[0]);
+        let $h3 = $("<h3>").text("Tech News")
+        $h3.addClass("module-title")
+        $(".technews").append($h3)
+
         for (let i = 0; i < 5; i++) {
             let $div = $("<div>");
-
-            
-
-           $div.html("<h5 class='technews-title'><strong><a href='" + r.articles[i].url + "'style='font-size: 20px;'>" + r.articles[i].title + "</strong></a></h5><p class='technews-text'>" + r.articles[i].description + "</p>")
-
+            $div.html("<h5 class='technews-title'><strong><a href='" + r.articles[i].url + "'style='font-size: 20px;'>" + r.articles[i].title + "</strong></a></h5><p class='technews-text'>" + r.articles[i].description + "</p>")
             $div.addClass("technews-article-" + i)
             if (i == 0) {
                 $(".technews").append($div)
@@ -132,9 +129,6 @@ function technews() {
                 $(".technews-article-" + prev).append($div);
             }
         }
-        let $h3 = $("<h3>").text("Tech News")
-        $h3.addClass("module-title")
-        $(".technews-article-0").prepend($h3)
     })
 }
 
