@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Ranga");
-/** {*/
-    //border: 2px solid red;
-/*}*/
+
+// Basic Layout & Colors
 
 html,
 body {
@@ -9,26 +8,15 @@ body {
     margin: 0;
 }
 
+$redBrown: #8B4515;
 $footerHeight: 50px;
+
+
 .container {
     min-height: 100%;
     margin-bottom: -$footerHeight;
+    background-image: url('http://amazingtile.info/wp-content/uploads/2016/02/grey-wood-flooring-texture.jpg');
 }
-
-.modules-area {
-    width: 920px;
-    margin: 0 auto;
-}
-
-.modules-area .module {
-    width: 300px;
-    display: inline-block;
-}
-
-.location {}
-
-.weather {}
-
 .footer {
     background-color: #282828;
     width: 100%;
@@ -37,42 +25,38 @@ $footerHeight: 50px;
     text-align: center;
     color: white;
     border-top: 1px solid black;
-    font-family: sans
+    font-family: sans-serif;
+}
+.title-bar {
+    background-color:$redBrown;
+    border: 1px solid black;
+    h1 {
+        font-family: "Ranga", times new roman;
+        font-size: 2.5em;
+    }
+    h3 {
+        font-family: American typewriter;
+    }
+    .location {
+    
+    }
+    .weather {
+    
+    }
 }
 
-.title-bar {
-    background-color: #8B4515;
-    border: 1px solid black;
-    
-}
+//Module Format
 
 .modules-area {
-    width: 920px;
-    margin: 0 auto;
-
+    width: 1000px;
+    .module {
+        background: rgba(0,0,0,0.4);
+        margin: 10px;
+        color: white;
+        width: 320px;
+        padding: 10px 5px;
+        display: inline-block;
+    }
 }
 
-.modules-area .module {
-    width: 300px;
-    display: inline-block;
-}
-
-
-.container {
-    background-image: url('http://amazingtile.info/wp-content/uploads/2016/02/grey-wood-flooring-texture.jpg');
-}
-
-.welcome h1 {
-    font-family: "Ranga", times new roman;
-    font-size: 70px;
-}
-
-.location h3 {
-    font-family: American typewriter;
-}
-
-.weather h3 {
-    font-family: American typewriter;
-}
-
-
+//Modules
