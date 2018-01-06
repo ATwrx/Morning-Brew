@@ -10,6 +10,7 @@ body {
 
 $redBrown: #8B4515;
 $footerHeight: 50px;
+$silver: #dddddd;
 
 
 .container {
@@ -58,7 +59,18 @@ $footerHeight: 50px;
         width: 320px;
         padding: 10px 5px;
         display: inline-block;
+        border: 2px solid black;
+        max-height: 500px;
+        overflow: scroll;
+        border-radius: 25px;
+    }
+    .module h3 {
+        color: darken($silver, 25%);
+        font-family: courier;
+        font-weight: bolder;
     }
 }
+
+
 
 //Modules
