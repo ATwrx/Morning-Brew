@@ -4,19 +4,19 @@ html,
 body {
     height: 100%;
     margin: 0;
+    background-image: url('http://amazingtile.info/wp-content/uploads/2016/02/grey-wood-flooring-texture.jpg');
 }
 
-$redBrown: #8B4515;
+$redBrown: rgba(80, 70, 63, 0.8);
 $footerHeight: 50px;
 $silver: #fefefe;
 .container {
     min-height: 100%;
     margin-bottom: -$footerHeight;
-    background-image: url('http://amazingtile.info/wp-content/uploads/2016/02/grey-wood-flooring-texture.jpg');
 }
 
 .footer {
-    background-color: #282828;
+    background-color: rgba(40, 40, 40, 0.4);
     width: 100%;
     height: $footerHeight;
     margin: 0 auto;
@@ -37,6 +37,7 @@ $silver: #fefefe;
         font-family: American typewriter;
     }
     #time {
+        padding-top: 25px;
         text-align: center;
         padding-bottom: 20px;
         #display {
@@ -56,28 +57,26 @@ $silver: #fefefe;
             filter: alpha(opacity=60);
         }
     }
-    .weather {
-        display: inline-block;
-        text-align: center;
-    }
+    
 }
 
 //Module Format
 .modules-area {
-    width: 1050px;
+    width: 1110px;
     margin: 0 auto;
-    margin-bottom: -$footerHeight;
+    margin-bottom: $footerHeight;
     .module {
         background: rgba(0, 0, 0, 0.4);
+        height:300px;
         margin: 10px;
         color: white;
-        width: 320px;
+        width: 350px;
         padding: 10px 5px;
         display: inline-block;
         border: 2px solid black;
         max-height: 500px;
-        overflow: scroll;
-        border-radius: 25px;
+        overflow: auto; 
+        border-radius: 5px;
     }
     .module h3 {
         color: darken($silver, 15%);
@@ -88,3 +87,12 @@ $silver: #fefefe;
 }
 
 //Modules
+
+.weather {
+    display: inline-block;
+    text-align: center;
+    img, h5 {
+        align-items: center;
+        display: inline;
+    }
+}

@@ -10,7 +10,7 @@ firebase.initializeApp(config)
 const database = firebase.database()
 const user = firebase.auth().currentUser
 var name, email, photoUrl, uid, emailVerified
-const defaultModules = ["sports", "technews", "news", "crypto"]
+const defaultModules = ["weather", "sports", "technews", "news", "crypto"]
 if (user != null) {
     name = user.displayName
     email = user.email
@@ -38,13 +38,14 @@ function loadDefault() {
         $div.addClass("module")
         $(".modules-area").append($div)
     }
+    getWeather()
     sports()
     technews()
     news()
     crypto()
 }
 function topBarData() {
-    getWeather()
+    
     startDate()
     startTime()
 }
@@ -93,16 +94,18 @@ function getWeather() {
             userLocation.lat = position.coords.latitude;
             userLocation.lon = position.coords.longitude;
             $.ajax(api + $.param(userLocation)).done(function (r) {
+                console.log(r)
                 let icon = $("<img>");
+                let description = $("<h5>").text(r.weather[0].description)
                 let result = $("<h4>");
                 let cTemp = r.main.temp;
                 let fTemp = Math.floor(cTemp * 1.8 + 32);
 
-                result.text("Weather for " + r.name);
+                result.text("It's " + fTemp + " F in  " + r.name);
                 $(".temp").text(fTemp + " F")
                 icon.attr("src", r.weather[0].icon);
                 icon.attr("alt", r.weather[0].description);
-                $(".weather").prepend(result, icon)
+                $(".weather").prepend(result, icon, description)
             });
         })
     }
