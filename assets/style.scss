@@ -1,7 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Ranga");
-
 // Basic Layout & Colors
-
 html,
 body {
     height: 100%;
@@ -11,13 +9,12 @@ body {
 $redBrown: #8B4515;
 $footerHeight: 50px;
 $silver: #fefefe;
-
-
 .container {
     min-height: 100%;
     margin-bottom: -$footerHeight;
     background-image: url('http://amazingtile.info/wp-content/uploads/2016/02/grey-wood-flooring-texture.jpg');
 }
+
 .footer {
     background-color: #282828;
     width: 100%;
@@ -28,8 +25,9 @@ $silver: #fefefe;
     border-top: 1px solid black;
     font-family: sans-serif;
 }
+
 .title-bar {
-    background-color:$redBrown;
+    background-color: $redBrown;
     border: 1px solid black;
     h1 {
         font-family: "Ranga", times new roman;
@@ -38,22 +36,39 @@ $silver: #fefefe;
     h3 {
         font-family: American typewriter;
     }
-    .location {
-    
+    #time {
+        text-align: center;
+        padding-bottom: 20px;
+        #display {
+            color: white; // font-size: 2.9em;
+            top: 10px;
+            padding-bottom: 20px;
+            opacity: 0.80;
+            filter: alpha(opacity=80);
+        }
+        #date {
+            border-bottom: thin solid;
+            color: white; //   font-size: 1.3em;
+            font-family: Georgia, "Times New Roman", Times, serif;
+            font-weight: normal;
+            letter-spacing: 0.2em;
+            opacity: 0.6;
+            filter: alpha(opacity=60);
+        }
     }
     .weather {
-    
+        display: inline-block;
+        text-align: center;
     }
 }
 
 //Module Format
-
 .modules-area {
     width: 1050px;
     margin: 0 auto;
     margin-bottom: -$footerHeight;
     .module {
-        background: rgba(0,0,0,0.4);
+        background: rgba(0, 0, 0, 0.4);
         margin: 10px;
         color: white;
         width: 320px;
@@ -65,13 +80,11 @@ $silver: #fefefe;
         border-radius: 25px;
     }
     .module h3 {
-        color: darken($silver,15%);
+        color: darken($silver, 15%);
         font-family: Palatino;
         font-weight: bold;
         font-size: 40px;
     }
 }
-
-
 
 //Modules

@@ -21,17 +21,17 @@ if (user != null) {
     loadDefault()
 }
 // User status listener
-firebase.auth().onAuthStateChanged(function(user) {
+firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
-        // User is signed in.
+        topBarData()
     } else {
-        // No user is signed in.
+       return
     }
 });
 
+
 function loadDefault() {
-    getWeather()
-    getDate()
+    topBarData()
     for (let i = 0; i < defaultModules.length; i++) {
         let $div = $("<div>")
         $div.addClass(defaultModules[i])
@@ -43,57 +43,73 @@ function loadDefault() {
     news()
     crypto()
 }
-
-function getDate() {
-    let today = new Date().toDateString()
-    let time = new Date().toTimeString()
-    $(".date").text(today + " " + time)
+function topBarData() {
+    getWeather()
+    startDate()
+    startTime()
 }
-
+function startDate() {
+    var d = new Date();
+    var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    document.getElementById("date").innerHTML = days[d.getDay()] + " " + [d.getMonth() + 1] + "/" + d.getDate() + "/" + d.getFullYear();
+}
+function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    var ampm = "";
+    m = checkTime(m);
+    if (h > 12) {
+        h = h - 12;
+        ampm = " PM";
+    } else if (h == 12) {
+        h = 12;
+        ampm = " AM";
+    } else if (h < 12) {
+        ampm = " AM";
+    } else {
+        ampm = "PM";
+    };
+    if (h == 0) {
+        h = 12;
+    }
+    document.getElementById('display').innerHTML = h + ":" + m + ampm;
+    var t = setTimeout(function () {
+        startTime()
+    }, 500);
+}
+function checkTime(i) {
+    if (i < 10) {
+        i = "0" + i
+    }; // add zero in front of numbers < 10
+    return i;
+}
 function getWeather() {
     let api = "https://fcc-weather-api.glitch.me/api/current?";
     if ("geolocation" in navigator) {
-        navigator.geolocation.getCurrentPosition(function(position) {
+        navigator.geolocation.getCurrentPosition(function (position) {
             let userLocation = {};
             userLocation.lat = position.coords.latitude;
             userLocation.lon = position.coords.longitude;
-            $.ajax(api + $.param(userLocation)).done(function(r) {
+            $.ajax(api + $.param(userLocation)).done(function (r) {
                 let icon = $("<img>");
                 let result = $("<h4>");
                 let cTemp = r.main.temp;
                 let fTemp = Math.floor(cTemp * 1.8 + 32);
-                let isCelsius = true;
 
-                result.text(r.name);
-                $(".temp").text(fTemp)
+                result.text("Weather for " + r.name);
+                $(".temp").text(fTemp + " F")
                 icon.attr("src", r.weather[0].icon);
                 icon.attr("alt", r.weather[0].description);
-
-
                 $(".weather").prepend(result, icon)
-                $(".temp").click(function() {
-                    if (isCelsius == true) {
-                        tempArea.text(fTemp);
-                        $("#f-temp").addClass("active");
-                        $("#c-temp").removeClass("active");
-                        isCelsius = false;
-                        return isCelsius;
-                    } else {
-                        tempArea.text(cTemp);
-                        $("#c-temp").addClass("active");
-                        $("#f-temp").removeClass("active");
-                        isCelsius = true;
-                        return isCelsius;
-                    };
-                });
             });
         })
     }
 }
-
 function sports() {
     let api = "https://newsapi.org/v2/top-headlines?sources=bbc-sport&apiKey=94d15b4fc0ea4ac8a2102b268ac422de";
-    $.ajax(api).done(function(r) {
+    $.ajax(api).done(function (r) {
         //console.log(r.articles[0]);
         for (let i = 0; i < 5; i++) {
             let $div = $("<div>");
@@ -111,16 +127,15 @@ function sports() {
         $(".sports-article-0").prepend($h3)
     })
 }
-
 function technews() {
     let api = "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=94d15b4fc0ea4ac8a2102b268ac422de";
-    $.ajax(api).done(function(r) {
-        // console.log(r.articles[0]);
+    $.ajax(api).done(function (r) {
+        console.log(r.articles[0]);
         let $h3 = $("<h3>").text("Tech News")
         $h3.addClass("module-title")
         $(".technews").append($h3)
 
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 3; i++) {
             let $div = $("<div>");
             $div.html("<h5 class='technews-title'><strong><a href='" + r.articles[i].url + "'style='font-size: 20px;'>" + r.articles[i].title + "</strong></a></h5><p class='technews-text'>" + r.articles[i].description + "</p>")
             $div.addClass("technews-article-" + i)
@@ -133,26 +148,10 @@ function technews() {
         }
     })
 }
-
-function crypto() {
-    let api = "https://api.coinmarketcap.com/v1/ticker/";
-    let coin = "bitcoin"
-    $.ajax({
-        url: api + coin + "/",
-        success: function(r) {
-            var thisCoin = r[0];
-            console.log(r);
-            $(".crypto").html("<h1>" + thisCoin.name + " (" + thisCoin.symbol + ") </h1><h2>Current Price (USD): " + thisCoin.price_usd + "</h2>");
-        },
-        error: function() {
-            $(".crypto").html("<h2>An error occured.</h2><h4> Is the name of the coin spelled correctly?</h4>")
-        }
-    })
-}
 function news() {
     let api = "https://newsapi.org/v2/top-headlines?sources=nbc-news&apiKey=94d15b4fc0ea4ac8a2102b268ac422de";
-    $.ajax(api).done(function(r) {
-        console.log(r.articles[0]);
+    $.ajax(api).done(function (r) {
+        // console.log(r.articles[0]);
         let $h3 = $("<h3>").text("World News")
         $h3.addClass("module-title")
         $(".news").append($h3)
@@ -170,13 +169,28 @@ function news() {
         }
     })
 }
+function crypto() {
+    let api = "https://api.coinmarketcap.com/v1/ticker/";
+    let coin = "bitcoin"
+    $.ajax({
+        url: api + coin + "/",
+        success: function (r) {
+            var thisCoin = r[0];
+            console.log(r);
+            $(".crypto").html("<h1>" + thisCoin.name + " (" + thisCoin.symbol + ") </h1><h2>Current Price (USD): " + thisCoin.price_usd + "</h2>");
+        },
+        error: function () {
+            $(".crypto").html("<h2>An error occured.</h2><h4> Is the name of the coin spelled correctly?</h4>")
+        }
+    })
+}
 
 // Button for the sign up page
-$("#sign-up-button").click(function() {
+$("#sign-up-button").click(function () {
     var email = $("#email").val();
     var password = $("#password").val();
     firebase.auth().createUserWithEmailAndPassword(email, password).
-    catch (function(error) {
+    catch(function (error) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
@@ -188,4 +202,3 @@ $("#sign-up-button").click(function() {
         console.log(error);
     })
 })
-

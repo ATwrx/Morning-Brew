@@ -27,6 +27,26 @@ body {
     font-size: 3.0em; }
   .title-bar h3 {
     font-family: American typewriter; }
+  .title-bar #time {
+    text-align: center;
+    padding-bottom: 20px; }
+    .title-bar #time #display {
+      color: white;
+      top: 10px;
+      padding-bottom: 20px;
+      opacity: 0.80;
+      filter: alpha(opacity=80); }
+    .title-bar #time #date {
+      border-bottom: thin solid;
+      color: white;
+      font-family: Georgia, "Times New Roman", Times, serif;
+      font-weight: normal;
+      letter-spacing: 0.2em;
+      opacity: 0.6;
+      filter: alpha(opacity=60); }
+  .title-bar .weather {
+    display: inline-block;
+    text-align: center; }
 
 .modules-area {
   width: 1050px;
