@@ -10,13 +10,47 @@ body {
 $redBrown: rgba(80, 70, 63, 0.8);
 $footerHeight: 50px;
 $silver: #fefefe;
+$superSeeThrough : rgba(40, 40, 40, 0.4);
 .container {
     min-height: 100%;
     margin-bottom: -$footerHeight;
 }
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
 
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
 .footer {
-    background-color: rgba(40, 40, 40, 0.4);
+    background-color:$superSeeThrough;
     width: 100%;
     height: $footerHeight;
     margin: 0 auto;
@@ -40,6 +74,8 @@ $silver: #fefefe;
         padding-top: 25px;
         text-align: center;
         padding-bottom: 20px;
+        position: relative;
+        top: 50%;
         #display {
             color: white; // font-size: 2.9em;
             top: 10px;
@@ -71,8 +107,9 @@ $silver: #fefefe;
         height:300px;
         margin: 10px;
         color: white;
-        width: 350px;
-        padding: 10px 5px;
+        width: auto;
+        max-width: 350px;
+        padding: 15px 15px;
         display: inline-block;
         border: 2px solid black;
         max-height: 500px;
@@ -86,14 +123,32 @@ $silver: #fefefe;
         font-size: 40px;
     }
 }
+.module::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: $superSeeThrough;
+}
+
+.module::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: $superSeeThrough;
+}
+
+.module::-webkit-scrollbar-thumb
+{
+	background-color: #000000;
+	border: 2px solid #555555;
+}
+
 
 //Modules
 
 .weather {
-    display: inline-block;
     text-align: center;
-    img, h5 {
-        align-items: center;
-        display: inline;
+    img, h4, h5 {
+        display: inline-block;
+        position: relative;
+        top: 40%;
     }
 }

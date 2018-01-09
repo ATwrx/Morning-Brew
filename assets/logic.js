@@ -17,17 +17,33 @@ if (user != null) {
     photoUrl = user.photoURL
     emailVerified = user.emailVerified
     uid = user.uid
+    modules = user.modules
+    loadModules()
 } else {
     loadDefault()
 }
 // User status listener
-firebase.auth().onAuthStateChanged(function (user) {
+firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         topBarData()
     } else {
-       return
+        return
     }
 });
+var modal = $(".modal")
+var btn = $("#sign-in")
+var span = $(".close")
+btn.onclick = function() {
+        modal.style.display = "block";
+    }
+span.onclick = function() {
+    modal.style.display = "none";
+}
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
 
 
 function loadDefault() {
@@ -44,16 +60,32 @@ function loadDefault() {
     news()
     crypto()
 }
+
+function loadModules() {
+    topBarData()
+    for (let i = 0; i < user.modules.length; i++) {
+        let $div = $("<div>")
+        $div.addClass(defaultModules[i])
+        $div.addClass("module")
+        $(".modules-area").append($div)
+        }
+    getWeather()
+    sports()
+    technew()
+    news()
+    crypto()
+}
 function topBarData() {
-    
     startDate()
     startTime()
 }
+
 function startDate() {
     var d = new Date();
     var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     document.getElementById("date").innerHTML = days[d.getDay()] + " " + [d.getMonth() + 1] + "/" + d.getDate() + "/" + d.getFullYear();
 }
+
 function startTime() {
     var today = new Date();
     var h = today.getHours();
@@ -76,24 +108,26 @@ function startTime() {
         h = 12;
     }
     document.getElementById('display').innerHTML = h + ":" + m + ampm;
-    var t = setTimeout(function () {
+    var t = setTimeout(function() {
         startTime()
     }, 500);
 }
+
 function checkTime(i) {
     if (i < 10) {
         i = "0" + i
     }; // add zero in front of numbers < 10
     return i;
 }
+
 function getWeather() {
     let api = "https://fcc-weather-api.glitch.me/api/current?";
     if ("geolocation" in navigator) {
-        navigator.geolocation.getCurrentPosition(function (position) {
+        navigator.geolocation.getCurrentPosition(function(position) {
             let userLocation = {};
             userLocation.lat = position.coords.latitude;
             userLocation.lon = position.coords.longitude;
-            $.ajax(api + $.param(userLocation)).done(function (r) {
+            $.ajax(api + $.param(userLocation)).done(function(r) {
                 console.log(r)
                 let icon = $("<img>");
                 let description = $("<h5>").text(r.weather[0].description)
@@ -110,9 +144,10 @@ function getWeather() {
         })
     }
 }
+
 function sports() {
     let api = "https://newsapi.org/v2/top-headlines?sources=bbc-sport&apiKey=94d15b4fc0ea4ac8a2102b268ac422de";
-    $.ajax(api).done(function (r) {
+    $.ajax(api).done(function(r) {
         //console.log(r.articles[0]);
         for (let i = 0; i < 5; i++) {
             let $div = $("<div>");
@@ -130,9 +165,10 @@ function sports() {
         $(".sports-article-0").prepend($h3)
     })
 }
+
 function technews() {
     let api = "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=94d15b4fc0ea4ac8a2102b268ac422de";
-    $.ajax(api).done(function (r) {
+    $.ajax(api).done(function(r) {
         console.log(r.articles[0]);
         let $h3 = $("<h3>").text("Tech News")
         $h3.addClass("module-title")
@@ -151,9 +187,10 @@ function technews() {
         }
     })
 }
+
 function news() {
     let api = "https://newsapi.org/v2/top-headlines?sources=nbc-news&apiKey=94d15b4fc0ea4ac8a2102b268ac422de";
-    $.ajax(api).done(function (r) {
+    $.ajax(api).done(function(r) {
         // console.log(r.articles[0]);
         let $h3 = $("<h3>").text("World News")
         $h3.addClass("module-title")
@@ -172,28 +209,55 @@ function news() {
         }
     })
 }
+
 function crypto() {
     let api = "https://api.coinmarketcap.com/v1/ticker/";
-    let coin = "bitcoin"
+    let coin = "Bitcoin"
     $.ajax({
         url: api + coin + "/",
-        success: function (r) {
-            var thisCoin = r[0];
-            console.log(r);
-            $(".crypto").html("<h1>" + thisCoin.name + " (" + thisCoin.symbol + ") </h1><h2>Current Price (USD): " + thisCoin.price_usd + "</h2>");
+        success: function(r) {
+            let thisCoin = r[0];
+            let input = $("<input>")
+            let btn = $("<button>")
+            input.attr({
+                value: "Bitcoin",
+                type: "text",
+                id: "coin-input",
+            })
+            input.addClass("inline")
+            btn.addClass("inline button button-small primary")
+            btn.attr({
+                value: "Search",
+                id: "coin-submit"
+            })
+            btn.text("Search")
+            $(".crypto").html("<div class='coin-info'><h4>" + thisCoin.name + " (" + thisCoin.symbol + ") </h4><h5>Current Price (USD): " + thisCoin.price_usd + "</h5></div>");
+            //$(".crypto").append(input, btn)
         },
-        error: function () {
+        error: function() {
             $(".crypto").html("<h2>An error occured.</h2><h4> Is the name of the coin spelled correctly?</h4>")
         }
     })
+/*    $(document).on("click", "#coin-submit", function() {*/
+        //let newCoin = $("#coin-input").val()
+        //let api = "https://api.coinmarketcap.com/v1/ticker/";
+        //$.ajax({
+            //url: api + newCoin + "/"
+            //success: function(r){
+                //let thisCoin = r.[0]
+                //$(".coin-info").html("<div class='coin-info'><h4>" + thisCoin.name + " (" + thisCoin.symbol + ") </h4><h5>Current Price (USD): " + thisCoin.price_usd + "</h5></div>");
+
+            //}
+        //})
+    /*})*/
 }
 
 // Button for the sign up page
-$("#sign-up-button").click(function () {
+$("#sign-up-button").click(function() {
     var email = $("#email").val();
     var password = $("#password").val();
     firebase.auth().createUserWithEmailAndPassword(email, password).
-    catch(function (error) {
+    catch (function(error) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
@@ -205,3 +269,4 @@ $("#sign-up-button").click(function () {
         console.log(error);
     })
 })
+

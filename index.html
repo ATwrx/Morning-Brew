@@ -1,37 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.css">
-    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
-    <link rel="stylesheet" type="text/css" href="assets/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <title>Morning Brew</title>
-</head>
-
-<body>
-    <div class="title-bar">
-        <div class="row">
-            <div class="welcome small-5 columns">
-                <h1>Morning&nbsp;Brew</h1>
-                <p><a href="" id="sign-in">Sign in </a>/ <a href="sign-up.html" id="sign-up">Sign up</a></p>
-            </div>
-           
-            <div id="time" class="small-5 small-offset-2 columns">
-                <div id="date"></div>
-                <div id="display"></div>
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+        crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.css">
+        <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+        <link rel="stylesheet" type="text/css" href="assets/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <title>Morning Brew</title>
+    </head>
+    
+    <body>
+        <div class="title-bar">
+            <div class="row">
+                <div class="welcome small-5 columns">
+                    <h1>Morning&nbsp;Brew</h1>
+                    <p id="sign-in-spot">
+                        <a href="#" id="sign-in">Sign in </a>/
+                        <a href="sign-up.html" id="sign-up">Sign up</a>
+                    </p>
+                </div>
+                <div class="modal">
+                    <div class="sign-up-form modal-content">
+                        <span class="close">&times;</span>
+                        <input type="text" name="email" id="email" placeholder="Email">
+                        <input type="password" name="password" id="password" placeholder="Password">
+                        <input type="button" class="button" id="sign-up-button" value="Sign up">
+                    </div>
+                </div>
+                <div id="time" class="small-5 small-offset-2 columns">
+                    <div id="date"></div>
+                    <div id="display"></div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container">
-        <div class="modules-area"></div>
-    </div>
-    <div class="footer">&copy;2017 Van, Andrew & Alex</div>
-    <script src="assets/logic.js"></script>
-</body>
+        <div class="container">
+            <div class="modules-area"></div>
+        </div>
+        <div class="footer">&copy;2017 Van, Andrew & Alex</div>
+        <script src="assets/logic.js"></script>
+    </body>
 
 </html>
+
